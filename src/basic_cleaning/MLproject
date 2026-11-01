@@ -1,0 +1,27 @@
+name: basic_cleaning
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      input_artifact:
+        description: W&B artifact containing the raw CSV dataset
+        type: string
+      output_artifact:
+        description: Name of the cleaned W&B artifact
+        type: string
+      output_type:
+        description: W&B artifact type for the cleaned dataset
+        type: string
+      output_description:
+        description: Description of the cleaned dataset artifact
+        type: string
+      min_price:
+        description: Minimum inclusive nightly price to retain
+        type: float
+      max_price:
+        description: Maximum inclusive nightly price to retain
+        type: float
+
+    command: >-
+        python run.py --input_artifact {input_artifact} --output_artifact {output_artifact} --output_type {output_type} --output_description {output_description} --min_price {min_price} --max_price {max_price}
